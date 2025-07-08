@@ -1,14 +1,49 @@
 # Supply Drop
 
+[![Docker Hub](https://img.shields.io/badge/docker-mirageous%2Fwebhallen--supply--drop-blue?logo=docker)](https://hub.docker.com/r/mirageous/webhallen-supply-drop)
+
+**Container image:**
+```
+docker pull mirageous/webhallen-supply-drop:latest
+```
+
+---
+
+## Makefile Commands
+
+- `make build` — Build the Docker image locally
+- `make push` — Build and push the image to Docker Hub
+- `make run` — Run the image locally with your `.env` file
+
+---
+
+## Example: docker-compose.yml
+
+```yaml
+version: "3.8"
+services:
+  supply-drop:
+    image: mirageous/webhallen-supply-drop:latest
+    container_name: supply-drop
+    restart: unless-stopped
+    environment:
+      WEBHALLEN_USERNAME: "your_username"
+      WEBHALLEN_PASSWORD: "your_password"
+      PUSHOVER_TOKEN: "your_pushover_token"   # optional
+      PUSHOVER_USER: "your_pushover_user"     # optional
+      TZ: Europe/Stockholm
+```
+
+---
+
 ## Requirements
-- Node.js 20 or newer
+- Node.js 24 or newer
+- [pnpm](https://pnpm.io/) (install with `npm install -g pnpm`)
 
 ## Setup
 1. Install dependencies:
    ```sh
-   npm install
-   # or
-   yarn install
+   pnpm install
    ```
 2. Create a `.env` file with your credentials:
    ```env
@@ -19,22 +54,33 @@
    ```
 
 ## Usage
-1. Build the project:
+1. Build the project (if needed):
    ```sh
-   npm run build
-   # or
-   yarn build
+   pnpm run build
    ```
 2. Run the app:
    ```sh
-   npm start
-   # or
-   yarn start
+   pnpm start
    ```
 
+## Docker
+- Build the image:
+  ```sh
+  make build
+  ```
+- Push to Docker Hub:
+  ```sh
+  make push
+  ```
+- Run locally:
+  ```sh
+  make run
+  ```
+
 ## Notes
-- Uses native `fetch` (Node.js 18+ required, Node.js 20+ recommended).
+- Uses native `fetch` (Node.js 18+ required, Node.js 24+ recommended).
 - All code is now in TypeScript.
+- Uses [pnpm](https://pnpm.io/) for dependency management.
 
 ## Push notifications (optional)
 To setup Push notifications you need to setup an account with [Pushover](https://pushover.net/api). You can try it out for free for 7 days and after that choose to [unlock forever for 5$ per device platform](https://pushover.net/pricing) (e.g. unlock it for all Apple devices).

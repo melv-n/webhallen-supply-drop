@@ -1,15 +1,15 @@
-# Use official Node.js 20 image
+# Use official Node.js 24 image
 FROM node:24-slim
 
-# Install tini for proper signal handling
-RUN apt-get update && apt-get install -y --no-install-recommends tini && rm -rf /var/lib/apt/lists/*
+# Install tini for proper signal handling and pnpm
+RUN apt-get update && apt-get install -y --no-install-recommends tini && npm install -g pnpm && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
 
 # Copy package files and install dependencies
-COPY package.json yarn.lock* package-lock.json* ./
-RUN npm install --production && npm install --no-save tsx dotenv node-cron
+COPY package.json pnpm-lock.yaml* ./
+RUN pnpm install --prod && pnpm add tsx dotenv node-cron pino pino-pretty
 
 # Copy source code
 COPY . .
