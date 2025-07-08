@@ -6,7 +6,9 @@ async function runJob() {
   await import('./index.js')
 }
 
-logger.info('Scheduling supply drop script to run every day at 8am (Europe/Stockholm)...')
+logger.info(
+  'Scheduling supply drop script to run every day at 8am (Europe/Stockholm)...',
+)
 cron.schedule('0 8 * * *', runJob, {
   scheduled: true,
   timezone: 'Europe/Stockholm',
@@ -16,4 +18,4 @@ cron.schedule('0 8 * * *', runJob, {
 runJob()
 
 // Keep process alive
-setInterval(() => {}, 1 << 30) 
+setInterval(() => {}, 1 << 30)

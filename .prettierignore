@@ -1,0 +1,11 @@
+# Ignore Markdown files
+*.md
+
+# Ignore pnpm lockfile
+pnpm-lock.yaml
+
+# Ignore other common lock/build files
+yarn.lock
+package-lock.json
+dist/
+logs/ 

@@ -3,10 +3,13 @@ import { sendPushNotification } from './pushover.js'
 
 const logger = pino({
   level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
-  transport: process.env.NODE_ENV !== 'production' ? {
-    target: 'pino-pretty',
-    options: { colorize: true }
-  } : undefined
+  transport:
+    process.env.NODE_ENV !== 'production'
+      ? {
+          target: 'pino-pretty',
+          options: { colorize: true },
+        }
+      : undefined,
 })
 
 export function errorAndPush(...args: any[]) {
@@ -15,4 +18,4 @@ export function errorAndPush(...args: any[]) {
   sendPushNotification('[Error]', msg)
 }
 
-export default logger 
+export default logger

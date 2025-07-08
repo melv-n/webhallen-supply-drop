@@ -13,4 +13,4 @@
     "resolveJsonModule": true
   },
   "include": ["index.ts", "io/**/*.ts"]
-} 
+}
