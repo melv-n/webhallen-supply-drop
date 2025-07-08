@@ -29,7 +29,7 @@ export async function getAuthCookie(
     )
     process.exit(0)
   }
-  logger.info('Webhallen login: got set-cookie: ' + r.headers.get('set-cookie'))
+  logger.info('Webhallen login successful')
   return extractSetCookie(r.headers.get('set-cookie') || '')
 }
 
@@ -53,7 +53,7 @@ export async function openSupplyDrop(cookie: string): Promise<void> {
     return
   }
 
-  const json = (await r.json()) as { drops?: SupplyDrop[] }
+  const json = (await r.json()) as { drops?: SupplyDropItem[] }
 
   if (!json.drops) {
     logger.error('Missing `drops` in response body')
