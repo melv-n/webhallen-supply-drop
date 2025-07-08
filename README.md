@@ -54,11 +54,8 @@ services:
    ```
 
 ## Usage
-1. Build the project (if needed):
-   ```sh
-   pnpm run build
-   ```
-2. Run the app:
+  
+1. Run the app:
    ```sh
    pnpm start
    ```
@@ -68,7 +65,7 @@ services:
   ```sh
   make build
   ```
-- Push to Docker Hub:
+- Push to GCHR:
   ```sh
   make push
   ```
