@@ -1,15 +1,40 @@
-# Webhallen Supply Drop opener
-Simple Node script to open your weekly supply drop, so you don't have to! 
+# Supply Drop
 
-Sends a push notification (optional) when a supply drop is opened or an error occurs. You could have this run every week on a Raspberry Pi with a CRON job.
+## Requirements
+- Node.js 20 or newer
 
-<img src="https://i.imgur.com/DeHEHRM.jpg" alt="Notification on Phone" width="300" />
+## Setup
+1. Install dependencies:
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+2. Create a `.env` file with your credentials:
+   ```env
+   WEBHALLEN_USERNAME=your_username
+   WEBHALLEN_PASSWORD=your_password
+   PUSHOVER_TOKEN=your_pushover_token
+   PUSHOVER_USER=your_pushover_user
+   ```
 
-## Quick start
-1. `cp .env.template .env`
-2. Edit `.env` and set all vars accordingly
-3. `yarn install`
-4. For Node v13+ run `npm start` or if you run Node v12 or lower `npm run node11`
+## Usage
+1. Build the project:
+   ```sh
+   npm run build
+   # or
+   yarn build
+   ```
+2. Run the app:
+   ```sh
+   npm start
+   # or
+   yarn start
+   ```
+
+## Notes
+- Uses native `fetch` (Node.js 18+ required, Node.js 20+ recommended).
+- All code is now in TypeScript.
 
 ## Push notifications (optional)
 To setup Push notifications you need to setup an account with [Pushover](https://pushover.net/api). You can try it out for free for 7 days and after that choose to [unlock forever for 5$ per device platform](https://pushover.net/pricing) (e.g. unlock it for all Apple devices).

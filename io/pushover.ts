@@ -1,19 +1,16 @@
-import fetch from 'node-fetch'
 import chalk from 'chalk'
-import logger from './log.mjs'
+import logger from './log.js'
 
-export function hasSetupPushover() {
-  return process.env.PUSHOVER_TOKEN && process.env.PUSHOVER_USER
+export function hasSetupPushover(): boolean {
+  return Boolean(process.env.PUSHOVER_TOKEN && process.env.PUSHOVER_USER)
 }
 
-export async function sendPushNotification(...message) {
+export async function sendPushNotification(...message: string[]): Promise<void> {
   if (!hasSetupPushover()) { return }
   
-  if (message.join) {
-    message = message.join(' ')
-  }
+  let msg = message.join ? message.join(' ') : message as unknown as string
 
-  logger.debug('Sending push notification: ' + message)
+  logger.debug('Sending push notification: ' + msg)
 
   const response = await fetch('https://api.pushover.net/1/messages.json', {
     method: 'POST',
@@ -23,7 +20,7 @@ export async function sendPushNotification(...message) {
     body: JSON.stringify({
       token: process.env.PUSHOVER_TOKEN,
       user: process.env.PUSHOVER_USER,
-      message,
+      message: msg,
     }),
   })
 
@@ -33,4 +30,4 @@ export async function sendPushNotification(...message) {
   }
   
   logger.info('Successfully sent PushOver Notification')
-}
+} 
