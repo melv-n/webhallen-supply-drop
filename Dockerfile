@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Copy package files and install dependencies
 COPY package.json pnpm-lock.yaml* ./
-RUN pnpm install --prod && pnpm add tsx dotenv node-cron pino pino-pretty
+RUN pnpm install --prod
 
 # Copy source code
 COPY . .

@@ -1,10 +1,10 @@
 # Supply Drop
 
-[![GHCR](https://img.shields.io/badge/ghcr.io-mirageous%2Fwebhallen--supply--drop-blue?logo=github)](https://github.com/mirageous/webhallen-supply-drop/pkgs/container/webhallen-supply-drop)
+[![GHCR](https://img.shields.io/badge/ghcr.io-melv--n%2Fwebhallen--supply--drop-blue?logo=github)](https://github.com/melv-n/webhallen-supply-drop/pkgs/container/webhallen-supply-drop)
 
 **Container image:**
 ```
-docker pull ghcr.io/mirageous/webhallen-supply-drop:latest
+docker pull ghcr.io/melv-n/webhallen-supply-drop:latest
 ```
 
 ---
@@ -23,7 +23,7 @@ docker pull ghcr.io/mirageous/webhallen-supply-drop:latest
 version: "3.8"
 services:
   supply-drop:
-    image: ghcr.io/mirageous/webhallen-supply-drop:latest
+    image: ghcr.io/melv-n/webhallen-supply-drop:latest
     container_name: supply-drop
     restart: unless-stopped
     environment:
