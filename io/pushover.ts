@@ -5,14 +5,10 @@ export function hasSetupPushover(): boolean {
   return Boolean(process.env.PUSHOVER_TOKEN && process.env.PUSHOVER_USER)
 }
 
-export async function sendPushNotification(
-  ...message: string[]
-): Promise<void> {
-  if (!hasSetupPushover()) {
-    return
-  }
-
-  let msg = message.join ? message.join(' ') : (message as unknown as string)
+export async function sendPushNotification(...message: string[]): Promise<void> {
+  if (!hasSetupPushover()) return
+  
+  let msg = message.join ? message.join(' ') : message as unknown as string
 
   logger.debug('Sending push notification: ' + msg)
 
@@ -29,11 +25,9 @@ export async function sendPushNotification(
   })
 
   if (response.status !== 200) {
-    logger.error(
-      `Unexpected status from PushOver API: got ${response.status} but expected 200`,
-    )
+    logger.error(`Unexpected status from PushOver API: got ${response.status} but expected 200`)
     return
   }
-
+  
   logger.info('Successfully sent PushOver Notification')
 }
