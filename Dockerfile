@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Copy package files and install dependencies
 COPY package.json pnpm-lock.yaml* ./
-RUN pnpm install --prod
+RUN pnpm install
 
 # Copy source code
 COPY . .

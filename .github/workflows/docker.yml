@@ -38,6 +38,7 @@ jobs:
             type=ref,event=branch
             type=ref,event=pr
             type=sha,prefix={{branch}}-
+            latest
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
