@@ -1,10 +1,10 @@
 # Supply Drop
 
-[![Docker Hub](https://img.shields.io/badge/docker-mirageous%2Fwebhallen--supply--drop-blue?logo=docker)](https://hub.docker.com/r/mirageous/webhallen-supply-drop)
+[![GHCR](https://img.shields.io/badge/ghcr.io-mirageous%2Fwebhallen--supply--drop-blue?logo=github)](https://github.com/mirageous/webhallen-supply-drop/pkgs/container/webhallen-supply-drop)
 
 **Container image:**
 ```
-docker pull mirageous/webhallen-supply-drop:latest
+docker pull ghcr.io/mirageous/webhallen-supply-drop:latest
 ```
 
 ---
@@ -12,7 +12,7 @@ docker pull mirageous/webhallen-supply-drop:latest
 ## Makefile Commands
 
 - `make build` — Build the Docker image locally
-- `make push` — Build and push the image to Docker Hub
+- `make push` — Build and push the image to GHCR
 - `make run` — Run the image locally with your `.env` file
 
 ---
@@ -23,7 +23,7 @@ docker pull mirageous/webhallen-supply-drop:latest
 version: "3.8"
 services:
   supply-drop:
-    image: mirageous/webhallen-supply-drop:latest
+    image: ghcr.io/mirageous/webhallen-supply-drop:latest
     container_name: supply-drop
     restart: unless-stopped
     environment:

@@ -1,4 +1,4 @@
-IMAGE=mirageous/webhallen-supply-drop
+IMAGE=ghcr.io/mirageous/webhallen-supply-drop
 TAG=latest
 PLATFORM?=linux/amd64
 
