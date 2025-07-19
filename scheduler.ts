@@ -1,9 +1,10 @@
 import cron from 'node-cron'
 import logger from './io/log.js'
+import { run } from './index.js'
 
 async function runJob() {
   logger.info('Running scheduled supply drop script...')
-  await import('./index.js')
+  await run()
 }
 
 logger.info(

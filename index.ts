@@ -20,7 +20,7 @@ process.on('uncaughtException', async (err: Error) => {
   process.exit(1)
 })
 
-;(async () => {
+export async function run() {
   if (!hasSetupPushover()) {
     logger.warn(`Pushover not setup -- won't send any push notifications`)
   }
@@ -41,4 +41,4 @@ process.on('uncaughtException', async (err: Error) => {
     logger.error('Failed to open supply drop:', err)
     await sendPushNotification('[Error] Failed to open supply drop', err?.message || String(err))
   }
-})()
+}
