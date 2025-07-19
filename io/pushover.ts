@@ -1,4 +1,3 @@
-import chalk from 'chalk'
 import logger from './log.js'
 
 export function hasSetupPushover(): boolean {

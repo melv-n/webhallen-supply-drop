@@ -1,4 +1,4 @@
-import { getAuthCookie, openSupplyDrop, getSupplyDrops, SupplyDrop } from './io/webhallen.js'
+import { getAuthCookie, openSupplyDrop, getSupplyDrops } from './io/webhallen.js'
 import { hasSetupPushover } from './io/pushover.js'
 import logger from './io/log.js'
 import { sendPushNotification } from './io/pushover.js'
