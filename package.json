@@ -12,7 +12,8 @@
     "dotenv": "^17.1.0",
     "node-cron": "^3.0.3",
     "pino": "^8.21.0",
-    "pino-pretty": "^13.0.0"
+    "pino-pretty": "^13.0.0",
+    "tsx": "^4.20.3"
   },
   "scripts": {
     "start": "tsx -r dotenv/config index.ts",
@@ -32,7 +33,6 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.1",
     "prettier": "^3.6.2",
-    "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "vitest": "^4.1.7"
   },

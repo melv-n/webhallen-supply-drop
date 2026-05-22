@@ -16,5 +16,5 @@ RUN pnpm install
 # Copy source code
 COPY . .
 
-# Use the default tini entrypoint from node:slim
-CMD ["npx", "tsx", "-r", "dotenv/config", "scheduler.ts"]
+# Use the locally installed runtime dependency instead of downloading at startup.
+CMD ["pnpm", "exec", "tsx", "-r", "dotenv/config", "scheduler.ts"]
