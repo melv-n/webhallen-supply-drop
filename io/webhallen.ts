@@ -12,38 +12,50 @@ export async function getAuthCookie(
   username?: string,
   password?: string,
 ): Promise<string | undefined> {
-  const r = await fetch('https://www.webhallen.com/api/login', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      username: username,
-      password: password,
-    }),
-  })
+  let r: Response
+  try {
+    r = await fetch('https://www.webhallen.com/api/login', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    })
+  } catch (err) {
+    logger.error({ err }, 'Webhallen login request failed')
+    return
+  }
 
   if (r.status !== 200) {
     logger.error(
       `Webhallen login: unexpected status - got ${r.status} but expected 200`,
     )
-    process.exit(0)
+    return
   }
   logger.info('Webhallen login successful')
   return extractSetCookie(r.headers.get('set-cookie') || '')
 }
 
 export async function openSupplyDrop(cookie: string): Promise<void> {
-  const r = await fetch('https://www.webhallen.com/api/supply-drop', {
-    method: 'POST',
-    headers: {
-      cookie: cookie,
-    },
-  })
+  let r: Response
+  try {
+    r = await fetch('https://www.webhallen.com/api/supply-drop', {
+      method: 'POST',
+      headers: {
+        cookie: cookie,
+      },
+    })
+  } catch (err) {
+    logger.error({ err }, 'Webhallen supply-drop open request failed')
+    return
+  }
 
   if (r.status === 403) {
     logger.warn(
-      "Got a 403 when trying to open supply drop, this likely means it's not ready yet",
+      'Got a 403 when trying to open supply drop, this likely means it is not ready yet',
     )
     return
   } else if (r.status !== 200) {
@@ -62,7 +74,7 @@ export async function openSupplyDrop(cookie: string): Promise<void> {
 
   json.drops.forEach((drop) => {
     logger.info(`${drop.name} (${drop.description})`)
-    sendPushNotification(`${drop.name} (${drop.description})`)
+    void sendPushNotification(`${drop.name} (${drop.description})`)
   })
 }
 
@@ -81,12 +93,18 @@ export interface SupplyDrop {
 export async function getSupplyDrops(
   cookie: string,
 ): Promise<SupplyDrop[] | undefined> {
-  const r = await fetch('https://www.webhallen.com/api/supply-drop', {
-    method: 'GET',
-    headers: {
-      cookie: cookie,
-    },
-  })
+  let r: Response
+  try {
+    r = await fetch('https://www.webhallen.com/api/supply-drop', {
+      method: 'GET',
+      headers: {
+        cookie: cookie,
+      },
+    })
+  } catch (err) {
+    logger.error({ err }, 'Webhallen supply-drop list request failed')
+    return
+  }
 
   if (r.status !== 200) {
     logger.error(

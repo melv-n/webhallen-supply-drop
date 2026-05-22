@@ -12,10 +12,10 @@ const logger = pino({
       : undefined,
 })
 
-export function errorAndPush(...args: any[]) {
+export function errorAndPush(...args: unknown[]) {
   const msg = args.map(String).join(' ')
   logger.error(msg)
-  sendPushNotification('[Error]', msg)
+  void sendPushNotification('[Error]', msg)
 }
 
 export default logger

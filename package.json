@@ -17,12 +17,14 @@
   "scripts": {
     "start": "tsx -r dotenv/config index.ts",
     "dev": "tsx -r dotenv/config index.ts",
+    "test": "vitest run",
     "lint": "eslint . --ext .ts,.js",
     "format": "prettier --write ."
   },
   "devDependencies": {
     "@types/chalk": "^0.4.31",
     "@types/node": "^24.0.10",
+    "@types/node-cron": "^3.0.11",
     "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^8.36.0",
     "@typescript-eslint/parser": "^8.36.0",
@@ -31,7 +33,8 @@
     "eslint-plugin-prettier": "^5.5.1",
     "prettier": "^3.6.2",
     "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^4.1.7"
   },
   "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
 }

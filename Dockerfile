@@ -7,6 +7,8 @@ RUN npm install -g pnpm
 # Set working directory
 WORKDIR /app
 
+ENV NODE_ENV=production
+
 # Copy package files and install dependencies
 COPY package.json pnpm-lock.yaml* ./
 RUN pnpm install
@@ -15,4 +17,4 @@ RUN pnpm install
 COPY . .
 
 # Use the default tini entrypoint from node:slim
-CMD ["npx", "tsx", "-r", "dotenv/config", "scheduler.ts"] 
+CMD ["npx", "tsx", "-r", "dotenv/config", "scheduler.ts"]

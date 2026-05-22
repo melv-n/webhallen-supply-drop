@@ -12,5 +12,5 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true
   },
-  "include": ["index.ts", "io/**/*.ts"]
+  "include": ["index.ts", "scheduler.ts", "io/**/*.ts"]
 }
